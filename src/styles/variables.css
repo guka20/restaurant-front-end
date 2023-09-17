@@ -1,0 +1,14 @@
+/* ================== FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Sora:wght@400&family=Teko&display=swap");
+:root {
+  /*==================== SIZES */
+  --basic-width: 93%;
+  --max-width: 2000px;
+  /*==================== COLORS */
+
+  --main-color: rgb(245, 238, 233);
+  --secondary-color: rgb(249, 248, 248);
+  --main-font-color: rgb(81,81,81);
+  --secondary-font-color: rgb(155, 159, 167);
+  --dark-black: rgb(46, 46, 46);
+}
