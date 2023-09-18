@@ -1,5 +1,4 @@
 import React from "react";
-import "./Home.css";
 export const Home = () => {
-  return <div className="home">Home</div>;
+  return <div className="home">Home Page Cominig Up soon!</div>;
 };
