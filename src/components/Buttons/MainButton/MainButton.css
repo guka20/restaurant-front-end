@@ -1,0 +1,9 @@
+@import "src/styles/variables.css";
+.main-button {
+  width: 90%;
+  height: 40px;
+  background-color: var(--button-colors);
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+}

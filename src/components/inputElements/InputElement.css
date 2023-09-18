@@ -1,0 +1,12 @@
+@import "src/styles/variables.css";
+input.input {
+  width: 300px;
+  padding: 5px;
+  height: 30px;
+  font-size: 1rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 5px;
+  &:focus {
+    border: 1px solid var(--button-colors);
+  }
+}

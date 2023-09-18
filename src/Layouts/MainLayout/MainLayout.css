@@ -1,0 +1,6 @@
+main.main-layout {
+  & .outlet-place {
+    width: 97%;
+    margin: 0 auto;
+  }
+}

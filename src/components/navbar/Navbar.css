@@ -1,0 +1,72 @@
+@import "src/styles/variables.css";
+
+nav.nav-bar {
+  width: 100%;
+  position: sticky;
+  right: 0;
+  top: 0;
+  padding: 15px 0;
+  background-color: rgba(249, 248, 248, 0.9);
+
+  & .in-nav-bar {
+    width: var(--basic-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & .logo {
+      cursor: pointer;
+      & .nav-bar-logo {
+        width: 30px;
+        vertical-align: middle;
+      }
+      & span {
+        vertical-align: middle;
+        font-weight: bolder;
+        font-size: 1.3rem;
+        margin-left: 10px;
+        color: var(--dark-black);
+        font-family: "Sora", sans-serif;
+      }
+    }
+    & ul.links {
+      display: flex;
+      gap: 40px;
+      & li {
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: var(--main-font-color);
+        position: relative;
+        .product-quantity {
+          background-color: red;
+          color: white;
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          font-size: 1.2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          top: -12px;
+          right: -10px;
+        }
+        & a {
+          color: var(--main-font-color);
+        }
+      }
+    }
+    .login-button {
+      padding: 7px 20px;
+      border: 1px solid rgb(219, 219, 219);
+      background-color: transparent;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      .login-icon {
+        vertical-align: middle;
+      }
+    }
+  }
+}
