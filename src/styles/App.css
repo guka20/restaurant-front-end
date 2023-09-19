@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: rgb(245, 243, 243);
+  overflow: auto;
 }
 body::-webkit-scrollbar {
   width: 5px;

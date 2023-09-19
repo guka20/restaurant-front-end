@@ -132,8 +132,11 @@ nav.nav-bar {
         display: flex;
       }
       &.open {
+        height: 100vh;
+
         position: fixed;
         display: flex;
+        justify-content: center;
         flex-direction: column;
         width: 100%;
         top: 0;
@@ -141,9 +144,10 @@ nav.nav-bar {
         background-color: rgb(245, 243, 243);
         right: 0;
         .navbar-responsive-icon {
+          position: absolute;
           align-self: flex-end;
-          margin-top: 40px;
-          margin-right: 40px;
+          top: 40px;
+          right: 40px;
         }
         & .logo {
           order: 5;
