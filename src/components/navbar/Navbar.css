@@ -5,10 +5,20 @@ nav.nav-bar {
   position: sticky;
   right: 0;
   top: 0;
-  padding: 15px 0;
-  background-color: rgba(249, 248, 248, 0.9);
-
+  background-color: transparent;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    backdrop-filter: blur(15px);
+  }
+  z-index: 999;
   & .in-nav-bar {
+    padding: 15px 0;
+
     width: var(--basic-width);
     max-width: var(--max-width);
     margin: 0 auto;
@@ -133,7 +143,6 @@ nav.nav-bar {
       }
       &.open {
         height: 100vh;
-
         position: fixed;
         display: flex;
         justify-content: center;

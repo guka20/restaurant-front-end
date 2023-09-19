@@ -1,0 +1,132 @@
+@import "src/styles/variables.css";
+header.header {
+  min-height: 200px;
+  height: max-content;
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--main-font);
+  .texture {
+    width: 50%;
+    .delivery-icon {
+      width: max-content;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+      background-color: rgb(252, 235, 211);
+      & span {
+        color: var(--button-colors);
+        font-weight: bolder;
+        font-size: 1.1rem;
+      }
+      .image-place {
+        margin-left: 10px;
+        display: flex;
+        justify-content: center;
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        background-color: white;
+        & img {
+          width: 30px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .delivery-ad {
+      font-size: 4rem;
+      font-weight: bolder;
+      color: var(--main-font-color);
+      letter-spacing: 2px;
+      & span {
+        color: var(--button-colors);
+      }
+    }
+    .sub-title {
+      color: var(--main-font-color);
+      font-size: 1rem;
+      width: 70%;
+    }
+    .button-place {
+      margin-top: 20px;
+      width: 150px;
+      & button {
+        transition-duration: 0.5s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  .offers {
+    padding: 50px 0;
+    width: 50%;
+    height: 100%;
+    position: relative;
+
+    .background-image {
+      width: 350px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      position: absolute;
+      background-image: url("src/assets/images/hero-bg.png");
+      background-size: cover;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 40px 20px;
+      align-items: center;
+      position: relative;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  header.header {
+    .offers {
+      .background-image {
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  header.header {
+    margin-top: 30px;
+    flex-direction: column;
+    .texture {
+      width: 100%;
+      .delivery-icon {
+        & span {
+          font-size: 0.9rem;
+        }
+      }
+      .delivery-ad {
+        margin: 10px 0;
+        font-size: 2rem;
+      }
+      .sub-title {
+        width: 100%;
+        text-align: center;
+      }
+      .button-place {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        & button.main-button {
+          margin: 0 auto;
+        }
+      }
+    }
+    .offers {
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+}
