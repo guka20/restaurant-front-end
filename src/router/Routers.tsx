@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { MainLayout } from "src/Layouts";
-import { About, Home, Menu, Services } from "../pages";
+import { About, Home, Login, Menu, Services } from "../pages";
 
 export const Routers = () => {
   return (
@@ -11,6 +11,7 @@ export const Routers = () => {
         <Route path="/menu" element={<Menu />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
       </Route>
     </Routes>
   );

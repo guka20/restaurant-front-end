@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
@@ -9,10 +10,19 @@ import { ContactPortal } from "../PortalComponents/ContactPortal/ContactPortal";
 
 export const Navbar = () => {
   const { isContactOpen, setIsContactOpen } = useContactContext();
-  const element = document.createElement("div");
+  const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
   return (
     <nav className="nav-bar">
-      <div className="in-nav-bar">
+      <div className={isNavbarOpen ? "in-nav-bar open" : "in-nav-bar"}>
+        <div
+          className="navbar-responsive-icon"
+          onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+        >
+          <div className="long"></div>
+          <div className="long"></div>
+          <div className="short"></div>
+        </div>
         <motion.div
           className="logo"
           initial={{ opacity: 0, x: 200 }}
@@ -51,8 +61,8 @@ export const Navbar = () => {
               Contact Us
             </div>
           </li>
-          <li>
-            <FaShoppingCart fontSize={23} />
+          <li className="shoping-cart-icon">
+            <FaShoppingCart className="shoping-cart" />
             <div className="product-quantity">0</div>
           </li>
         </motion.ul>
@@ -61,8 +71,9 @@ export const Navbar = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 200 }}
+          onClick={() => navigate("/login")}
         >
-          <FiLogIn className="login-icon" /> Login
+          <FiLogIn className="login-icon" /> <span>Login</span>
         </motion.button>
       </div>
       {isContactOpen && <ContactPortal />}

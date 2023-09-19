@@ -36,21 +36,21 @@ export const ContactPortal = () => {
       initial={{ width: 0 }}
       animate={{ width: "350px" }}
     >
-      <div className="inside-container">
-        <div className="header">
-          <div className="secondary-header">
-            <div className="left-side">
-              <MdOutlineMessage fontSize={22} color="rgb(234, 88, 12)" />
-              <span> CONTACT US</span>
-            </div>
-            <button onClick={() => setIsContactOpen(false)}>
-              <BsArrowLeft
-                fontSize={20}
-                style={{ backgroundColor: "transparent" }}
-              />
-            </button>
+      <div className="header">
+        <div className="secondary-header">
+          <div className="left-side">
+            <MdOutlineMessage fontSize={22} color="rgb(234, 88, 12)" />
+            <span> CONTACT US</span>
           </div>
+          <button onClick={() => setIsContactOpen(false)}>
+            <BsArrowLeft
+              fontSize={20}
+              style={{ backgroundColor: "transparent" }}
+            />
+          </button>
         </div>
+      </div>
+      <div className="inside-container">
         <img src={emptyCart} className="empty-cart-image" alt="" />
         <div className="forms">
           <InputElement

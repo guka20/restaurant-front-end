@@ -1,3 +1,6 @@
+:root {
+  --text-area-size: 100%;
+}
 div.contact-portal {
   height: 100vh;
   position: fixed;
@@ -12,29 +15,31 @@ div.contact-portal {
   &::-webkit-scrollbar-thumb {
     background-color: rgb(249, 115, 22);
   }
-  .inside-container {
-    min-width: 300px;
-    height: 100%;
-    margin: 0 auto;
-    .header {
-      width: 100%;
-      padding: 7px 0;
-      background-color: white;
-      .secondary-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 95%;
-        margin: 0 auto;
-        .left-side * {
-          vertical-align: middle;
-        }
-        & button {
-          background-color: transparent;
-          cursor: pointer;
-        }
+  .header {
+    width: 100%;
+    padding: 7px 0;
+    background-color: white;
+    .secondary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 95%;
+      margin: 0 auto;
+      .left-side * {
+        vertical-align: middle;
+      }
+      & button {
+        background-color: transparent;
+        cursor: pointer;
       }
     }
+  }
+  .inside-container {
+    min-width: 300px;
+    max-width: 90%;
+    height: 100%;
+    margin: 0 auto;
+
     .empty-cart-image {
       width: 100px;
       height: 200px;
@@ -48,8 +53,8 @@ div.contact-portal {
       gap: 35px;
       align-items: center;
       .message-area {
-        min-width: 300px;
-        max-width: 300px;
+        min-width: var(--text-area-size);
+        max-width: var(--text-area-size);
         min-height: 300px;
         max-height: 300px;
         font-size: 1rem;
@@ -64,5 +69,11 @@ div.contact-portal {
         color: rgb(126, 126, 126);
       }
     }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  div.contact-portal {
+    min-width: 100%;
   }
 }
