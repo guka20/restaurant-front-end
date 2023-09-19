@@ -15,6 +15,26 @@ nav.nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .navbar-responsive-icon {
+      padding: 2px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      cursor: pointer;
+
+      & div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--dark-black);
+        border-radius: 2px;
+        &.short {
+          width: 15px;
+          align-self: flex-start;
+        }
+      }
+    }
     & .logo {
       cursor: pointer;
       & .nav-bar-logo {
@@ -38,6 +58,9 @@ nav.nav-bar {
         font-size: 1.1rem;
         color: var(--main-font-color);
         position: relative;
+        & .shoping-cart {
+          font-size: 22px;
+        }
         .product-quantity {
           background-color: red;
           color: white;
@@ -66,6 +89,100 @@ nav.nav-bar {
       font-size: 1rem;
       .login-icon {
         vertical-align: middle;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  nav.nav-bar {
+    padding: 0;
+    & .in-nav-bar {
+      gap: 0;
+      & .logo {
+        & span {
+          font-size: 0.9rem;
+        }
+        & .nav-bar-logo {
+          width: 25px;
+        }
+      }
+
+      & ul.links {
+        & li {
+          font-size: 0.9rem;
+          & .shoping-cart {
+            font-size: 1rem;
+          }
+        }
+      }
+      .login-button {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  nav.nav-bar {
+    .in-nav-bar {
+      padding: 5px 0;
+      .navbar-responsive-icon {
+        display: flex;
+      }
+      &.open {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgb(245, 243, 243);
+        right: 0;
+        .navbar-responsive-icon {
+          align-self: flex-end;
+          margin-top: 40px;
+          margin-right: 40px;
+        }
+        & .logo {
+          order: 5;
+          & .nav-bar-logo {
+            width: 100px;
+          }
+          & span {
+            font-size: 1.7rem;
+          }
+        }
+        & ul.links {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          z-index: 5;
+          & li {
+            font-size: 1.1rem;
+            &.shoping-cart-icon {
+              position: absolute;
+              top: 40px;
+              left: 40px;
+              & .shoping-cart {
+                font-size: 25px;
+              }
+            }
+          }
+        }
+        & .login-button {
+          display: none;
+        }
+      }
+      & ul.links {
+        display: none;
+      }
+      .login-button {
+        & span {
+          display: none;
+        }
       }
     }
   }
