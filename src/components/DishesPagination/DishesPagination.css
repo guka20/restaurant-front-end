@@ -1,0 +1,52 @@
+@import "src/styles/variables.css";
+.dishes-section {
+  margin: 0 auto;
+  margin-top: 100px;
+  font-family: var(--main-font);
+  text-align: center;
+
+  .dishes-header {
+    font-size: 1.5rem;
+    position: relative;
+    padding: 10px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      border-radius: 5px;
+      background-color: var(--button-colors);
+    }
+  }
+  .pagination-buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    .pagination-btn {
+      cursor: pointer;
+      &.active {
+        border-bottom: 2px solid var(--button-colors);
+      }
+    }
+  }
+  .products {
+    margin-top: 50px;
+    display: grid;
+    grid-gap: 50px;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
+}
+@media screen and (max-width: 880px) {
+  .dishes-section {
+    .products {
+      justify-content: space-around;
+    }
+  }
+}

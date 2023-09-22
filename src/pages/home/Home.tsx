@@ -1,8 +1,9 @@
 import React from "react";
 import "./Home.css";
 import { SwiperSlide } from "swiper/react";
-import { CartSwiper, Header } from "./components";
+import { CartSwiper, DishesPagination, Header } from "./components";
 import { ProductCart } from "src/components";
+
 export const Home = () => {
   return (
     <div className="home">
@@ -45,6 +46,7 @@ export const Home = () => {
           <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
         </SwiperSlide>
       </CartSwiper>
+      <DishesPagination />
     </div>
   );
 };
