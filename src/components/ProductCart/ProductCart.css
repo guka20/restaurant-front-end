@@ -15,7 +15,9 @@
       width: 150px;
       height: 150px;
       position: relative;
+
       & img {
+        display: block;
         top: -15px;
         position: absolute;
         width: 100%;
