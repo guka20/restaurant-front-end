@@ -1,0 +1,56 @@
+@import "src/styles/variables.css";
+.services-page {
+  text-align: center;
+  & h1 {
+    color: var(--main-font-color);
+    position: relative;
+    padding: 10px;
+    &::after {
+      content: "";
+      width: 200px;
+      height: 5px;
+      background-color: var(--button-colors);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .services-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    justify-content: space-between;
+    .service {
+      display: flex;
+      align-items: center;
+      .icon {
+        font-size: 2rem;
+        color: var(--button-colors);
+      }
+      & div {
+        margin-left: 10px;
+        & h3 {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .services-page {
+    .services-container {
+      grid-template-columns: auto auto;
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .services-page {
+    .services-container {
+      text-align: left;
+      grid-template-columns: auto;
+    }
+  }
+}
