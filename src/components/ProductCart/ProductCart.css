@@ -1,0 +1,51 @@
+@import "src/styles/variables.css";
+.product-cart {
+  font-family: var(--main-font);
+  margin-top: 20px;
+  padding: 0 10px 5px 0;
+  width: 250px;
+  background-color: rgb(249, 245, 242);
+
+  .image-cart-place {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .image-place {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      & img {
+        top: -15px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition-duration: 0.2s;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+    .add-to-cart {
+      cursor: pointer;
+      padding: 7px 10px;
+      background-color: var(--red-color);
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      transition-duration: 0.2s;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  .textures {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    & .dollar-icon {
+      color: rgb(232, 0, 19);
+    }
+  }
+}
