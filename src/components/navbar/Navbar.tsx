@@ -51,9 +51,6 @@ export const Navbar = () => {
             <Link to="/services">Services</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
             <div
               className="contact-btn"
               onClick={() => setIsContactOpen(!isContactOpen)}
