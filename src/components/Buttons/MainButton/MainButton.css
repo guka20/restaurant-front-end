@@ -1,6 +1,6 @@
 @import "src/styles/variables.css";
 .main-button {
-  width: 90%;
+  width: 100%;
   height: 40px;
   background-color: var(--button-colors);
   color: white;
