@@ -1,59 +1,58 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { InputElement, MainButton } from "src/components";
 import icon from "src/assets/logo/chef.png";
-import "./Login.css";
+import "./Signup.css";
 import { useNavigate } from "react-router-dom";
-type LoginPropertiesTypes = {
+type SignUpPropertiesTypes = {
   email: string;
   password: string;
 };
 
-export const Login = () => {
+export const Signup = () => {
   const navigate = useNavigate();
-  const [loginProperties, setLoginProperties] = useState<LoginPropertiesTypes>({
-    email: "",
-    password: "",
-  });
+  const [SignUpProperties, setSignUpProperties] =
+    useState<SignUpPropertiesTypes>({
+      email: "",
+      password: "",
+    });
   const handleValueChange = (e: any) => {
     const { value, name } = e.target;
 
-    setLoginProperties({
-      ...loginProperties,
+    setSignUpProperties({
+      ...SignUpProperties,
       [name]: value,
     });
   };
-  const handleLoginClick = () => {};
-  const handleSignUpClick = () => {
-    navigate("/signup");
+  const handleSignUpClick = () => {};
+  const handleloginClick = () => {
+    navigate("/login");
   };
   return (
-    <div className="login-page">
+    <div className="signup-page">
       <div className="image">
         <img src={icon} alt="" width={50} />
       </div>
-      <div className="login-elements">
+      <div className="signup-elements">
         <InputElement
           name="email"
           type="email"
           placeholder="Email address"
-          value={loginProperties?.email}
+          value={SignUpProperties?.email}
           handleContactValueChange={handleValueChange}
         />
         <InputElement
           name="password"
           type="password"
           placeholder="Password"
-          value={loginProperties?.password}
+          value={SignUpProperties?.password}
           handleContactValueChange={handleValueChange}
         />
 
-        <div className="forgot-password">Forgot password</div>
-
-        <MainButton handleButtonClick={handleLoginClick}>SIGN IN</MainButton>
+        <MainButton handleButtonClick={handleSignUpClick}>SIGN UP</MainButton>
 
         <div className="line"></div>
 
-        <MainButton handleButtonClick={handleSignUpClick}>SIGN UP</MainButton>
+        <MainButton handleButtonClick={handleloginClick}>SIGN IN</MainButton>
       </div>
     </div>
   );
