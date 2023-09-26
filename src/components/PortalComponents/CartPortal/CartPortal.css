@@ -1,0 +1,58 @@
+@import "src/styles/variables.css";
+.cart-portal {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  overflow: hidden;
+  background-color: rgb(245, 243, 243);
+  .header {
+    width: 100%;
+    padding: 7px 0;
+    background-color: white;
+    .secondary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 95%;
+      margin: 0 auto;
+      .cart-icon * {
+        vertical-align: middle;
+        font-size: 1.1rem;
+        .shopping-cart {
+          color: var(--red-color);
+        }
+      }
+      & button {
+        background-color: transparent;
+        cursor: pointer;
+      }
+      .login-button {
+        font-size: 1rem;
+        .login-icon {
+          color: var(--red-color);
+          margin-right: 5px;
+        }
+        & * {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .products {
+    position: relative;
+    height: 100%;
+    & img.empty-cart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+@media screen and (max-width: 770px) {
+  div.cart-portal {
+    min-width: 100%;
+  }
+}

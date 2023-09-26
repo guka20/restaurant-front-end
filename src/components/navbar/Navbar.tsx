@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 import "./Navbar.css";
-import { useContactContext } from "src/context";
+import { useCartPortalContext, useContactContext } from "src/context";
 import { ContactPortal } from "../PortalComponents/ContactPortal/ContactPortal";
+import { CartPortal } from "../PortalComponents/CartPortal/CartPortal";
 
 export const Navbar = () => {
   const { isContactOpen, setIsContactOpen } = useContactContext();
+  const { isCartOpen, setIsCartOpen } = useCartPortalContext();
   const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   return (
@@ -58,7 +60,10 @@ export const Navbar = () => {
               Contact Us
             </div>
           </li>
-          <li className="shoping-cart-icon">
+          <li
+            className="shoping-cart-icon"
+            onClick={() => setIsCartOpen(!isCartOpen)}
+          >
             <FaShoppingCart className="shoping-cart" />
             <div className="product-quantity">0</div>
           </li>
@@ -74,6 +79,7 @@ export const Navbar = () => {
         </motion.button>
       </div>
       {isContactOpen && <ContactPortal />}
+      {isCartOpen && <CartPortal />}
     </nav>
   );
 };
