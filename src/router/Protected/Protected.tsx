@@ -1,5 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useUserTypeContext } from "src/context";
+import { UserEnum } from "src/types/user.types";
 export const Protected = () => {
-  const { isAuth } = { isAuth: false };
-  return isAuth ? <Outlet /> : <Navigate to={"/"} replace />;
+  const { userType } = useUserTypeContext();
+  return userType === UserEnum.ADMIN ? (
+    <Outlet />
+  ) : (
+    <Navigate to={"/"} replace />
+  );
 };
