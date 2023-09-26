@@ -1,0 +1,58 @@
+@import "src/styles/variables.css";
+.private-navbar {
+  width: 100%;
+  position: sticky;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  z-index: 999;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    backdrop-filter: blur(15px);
+  }
+  .in-nav-bar {
+    width: var(--basic-width);
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: var(--max-width);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      cursor: pointer;
+      & .nav-bar-logo {
+        width: 30px;
+        vertical-align: middle;
+      }
+      & span {
+        vertical-align: middle;
+        font-weight: bolder;
+        font-size: 1.3rem;
+        margin-left: 10px;
+        color: var(--dark-black);
+        font-family: "Sora", sans-serif;
+      }
+    }
+    .buttons {
+      display: flex;
+      align-items: center;
+      gap: 0 20px;
+      .add-button {
+        font-size: 1rem;
+        color: var(--dark-black);
+        cursor: pointer;
+        & svg {
+          font-size: 1.1rem;
+          color: var(--button-colors);
+          vertical-align: top;
+        }
+      }
+    }
+  }
+}

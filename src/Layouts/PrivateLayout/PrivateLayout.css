@@ -1,0 +1,10 @@
+@import "src/styles/variables.css";
+.private-layout {
+  width: 100%;
+  .outlet-place {
+    margin: 0 auto;
+    width: var(--basic-width);
+    max-width: var(--max-width);
+    padding-bottom: 200px;
+  }
+}

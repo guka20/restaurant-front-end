@@ -1,3 +1,4 @@
+export { NewService } from "./NewService/NewService";
 export { NewProduct } from "./NewProduct/NewProduct";
 export { UpdateProduct } from "./UpdateProduct/UpdateProduct";
 export { Signup } from "./signup/Signup";
