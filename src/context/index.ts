@@ -6,3 +6,4 @@ export {
   CartPortalContext,
   useCartPortalContext,
 } from "./CartPortalContext/CartPortalContext";
+export * from "./AuthContext/AuthContext";

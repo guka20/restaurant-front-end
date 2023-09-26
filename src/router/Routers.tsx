@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { MainLayout } from "src/Layouts";
 import { Home, Login, Menu, Services, Signup } from "../pages";
@@ -13,6 +12,7 @@ export const Routers = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Route>
+      
     </Routes>
   );
 };
