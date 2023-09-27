@@ -5,7 +5,6 @@ import {
   Login,
   Menu,
   NewProduct,
-  NewService,
   Services,
   Signup,
   UpdateProduct,
@@ -51,7 +50,6 @@ export const Routers = () => {
         <Route path="/admin" element={<PrivateLayout />}>
           <Route index element={<Home />} />
           <Route path="new-product" element={<NewProduct />} />
-          <Route path="new-service" element={<NewService />} />
           <Route path="update" element={<UpdateProduct />} />
         </Route>
       </Route>

@@ -12,3 +12,11 @@ export type ProductCardTypes = {
   subtitle?: string;
   price: number;
 };
+
+export type NewProductType = {
+  category: string;
+  name: string;
+  subtitle: string;
+  price: number;
+  image: string;
+};
