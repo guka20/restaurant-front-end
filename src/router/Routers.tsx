@@ -12,11 +12,16 @@ import {
 import { Protected } from "./Protected/Protected";
 import { useUserTypeContext } from "src/context";
 import { UserEnum } from "src/types/user.types";
+import { PrivateLayout } from "src/Layouts/PrivateLayout/PrivateLayout";
 export const Routers = () => {
   const { userType } = useUserTypeContext();
   return (
     <Routes>
-      <Route element={<MainLayout />}>
+      <Route
+        element={
+          userType === UserEnum.ADMIN ? <Navigate to="admin" /> : <MainLayout />
+        }
+      >
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/services" element={<Services />} />
@@ -42,8 +47,11 @@ export const Routers = () => {
         />
       </Route>
       <Route path="/" element={<Protected />}>
-        <Route path="new" element={<NewProduct />} />
-        <Route path="update" element={<UpdateProduct />} />
+        <Route path="/admin" element={<PrivateLayout />}>
+          <Route index element={<Home />} />
+          <Route path="new-product" element={<NewProduct />} />
+          <Route path="update" element={<UpdateProduct />} />
+        </Route>
       </Route>
     </Routes>
   );

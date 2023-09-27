@@ -1,0 +1,31 @@
+@import "src/styles/variables.css";
+.new-product-page {
+  text-align: center;
+  & h1 {
+    color: var(--main-font-color);
+  }
+  .forms {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 50px 20px;
+
+    & select {
+      cursor: pointer;
+    }
+    & input,
+    select {
+      width: 500px;
+      height: 30px;
+      background-color: var(--secondary-color);
+      border-bottom: 1px solid var(--dark-black);
+      font-size: 1rem;
+      padding: 5px;
+    }
+  }
+  .button-place {
+    width: 50%;
+    margin: 50px auto;
+  }
+}
