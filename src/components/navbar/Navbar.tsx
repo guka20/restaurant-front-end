@@ -13,12 +13,19 @@ import {
 import { ContactPortal } from "../PortalComponents/ContactPortal/ContactPortal";
 import { CartPortal } from "../PortalComponents/CartPortal/CartPortal";
 import "./Navbar.css";
+import { useQuery } from "@tanstack/react-query";
+import { getAllCarts } from "src/helper";
 
 export const Navbar = () => {
   const { isContactOpen, setIsContactOpen } = useContactContext();
   const { isCartOpen, setIsCartOpen } = useCartPortalContext();
   const { userType, setUserType } = useUserTypeContext();
   const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
+  const { data } = useQuery({
+    queryKey: ["carts"],
+    queryFn: getAllCarts,
+  });
+
   const navigate = useNavigate();
 
   const handleLoginButton = () => {
@@ -80,7 +87,7 @@ export const Navbar = () => {
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
             <FaShoppingCart className="shoping-cart" />
-            <div className="product-quantity">0</div>
+            <div className="product-quantity">{data?.length}</div>
           </li>
         </motion.ul>
         {userType === UserEnum.GUEST ? (
