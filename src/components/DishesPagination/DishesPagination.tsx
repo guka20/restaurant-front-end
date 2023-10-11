@@ -3,13 +3,23 @@ import "./DishesPagination.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ProductCart } from "src/components";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProducts } from "src/helper";
+import { ProductCardTypes } from "src/types/Types";
 export const DishesPagination = () => {
   const [currentData, setCurrentData] = useState<string>("menu");
+  const { data, isError } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
+
   const handlePaginationClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const { id } = e.currentTarget;
     setCurrentData(id);
   };
-  useEffect(() => {}, [currentData]);
+  if (isError) {
+    return <div>Something is wrong</div>;
+  }
   return (
     <section className="dishes-section">
       <span className="dishes-header">Our Hot Dishes</span>
@@ -89,19 +99,15 @@ export const DishesPagination = () => {
         exit={{ opacity: 0, x: 200 }}
         className="products"
       >
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+        {data?.data.map((prod: ProductCardTypes) => (
+          <ProductCart
+            key={prod.product_id}
+            name={prod.name}
+            subtitle={prod.subtitle || ""}
+            price={prod.price}
+            product_id={prod.product_id}
+          />
+        ))}
       </motion.div>
     </section>
   );

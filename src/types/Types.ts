@@ -6,9 +6,9 @@ export type ContactTypes = {
 };
 
 export type ProductCardTypes = {
-  // id: string;
+  product_id: string;
   // image: string;
-  title: string;
+  name: string;
   subtitle?: string;
   price: number;
 };

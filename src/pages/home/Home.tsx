@@ -1,4 +1,3 @@
-import React from "react";
 import "./Home.css";
 import { SwiperSlide } from "swiper/react";
 import { CartSwiper, DishesPagination, Header } from "./components";
@@ -10,40 +9,68 @@ export const Home = () => {
       <Header />
       <CartSwiper>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="4"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="5"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="6"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="7"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="8"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="9"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="10"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCart title="Apple" subtitle="Red Delicious" price={15} />
+          <ProductCart
+            name="Apple"
+            subtitle="Red Delicious"
+            price={15}
+            product_id="11"
+          />
         </SwiperSlide>
       </CartSwiper>
       <DishesPagination />

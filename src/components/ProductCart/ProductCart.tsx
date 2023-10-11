@@ -6,12 +6,30 @@ import { ProductCardTypes } from "src/types/Types";
 import { useUserTypeContext } from "src/context";
 import { UserEnum } from "src/types/user.types";
 import { useNavigate } from "react-router-dom";
-export const ProductCart = ({ title, subtitle, price }: ProductCardTypes) => {
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addNewCart } from "src/helper";
+export const ProductCart = ({
+  name,
+  subtitle,
+  price,
+  product_id,
+}: ProductCardTypes) => {
   const { userType } = useUserTypeContext();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation((productID: string) => addNewCart(productID), {
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["carts"] });
+    },
+    onError: (error) => {
+      console.error("Error adding to cart:", error);
+    },
+  });
   const handleAddInCartButton = () => {
     if (userType === UserEnum.GUEST) {
       navigate("/login");
+    } else {
+      mutation.mutate(product_id);
     }
   };
   return (
@@ -25,7 +43,7 @@ export const ProductCart = ({ title, subtitle, price }: ProductCardTypes) => {
         </button>
       </div>
       <div className="textures">
-        <span>{title}</span>
+        <span>{name}</span>
         <span>{subtitle}</span>
         <span>
           <span className="dollar-icon">$ </span>
