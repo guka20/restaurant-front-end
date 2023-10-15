@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { InputElement, MainButton } from "src/components";
 import icon from "src/assets/logo/chef.png";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
-type LoginPropertiesTypes = {
-  email: string;
-  password: string;
-};
+import { useMutation } from "@tanstack/react-query";
+import { loginPost } from "src/helper";
+import { LoginPropertiesTypes, TokenDataType } from "./types/index";
+import { Link } from "react-router-dom";
+import { useUserTypeContext } from "src/context";
+import { Decoder } from "src/helper/jwtDecoder";
+import { UserEnum } from "src/types/user.types";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [loginProperties, setLoginProperties] = useState<LoginPropertiesTypes>({
     email: "",
     password: "",
   });
+  const { setUserType } = useUserTypeContext();
+  // ================ SEND POST REQUEST TO GET ACCESSTOKEN
+  const createLoginMutation = useMutation({
+    mutationFn: loginPost,
+    onSuccess: (data: TokenDataType) => {
+      const result = Decoder(data.accessToken);
+      localStorage.setItem("token", data.accessToken);
+      setUserType(result.role === "ADMIN" ? UserEnum.ADMIN : UserEnum.USER);
+    },
+  });
+
+  // ================ HANDLE EACH INPUT ELEMENT VALUE CHANGE
   const handleValueChange = (e: any) => {
     const { value, name } = e.target;
 
@@ -22,10 +35,12 @@ export const Login = () => {
       [name]: value,
     });
   };
-  const handleLoginClick = () => {};
-  const handleSignUpClick = () => {
-    navigate("/signup");
+
+  // ================ HANDLE LOGIN BUTTON CLICK
+  const handleLoginClick = () => {
+    createLoginMutation.mutate(loginProperties);
   };
+
   return (
     <div className="login-page">
       <div className="image">
@@ -53,7 +68,9 @@ export const Login = () => {
 
         <div className="line"></div>
 
-        <MainButton handleButtonClick={handleSignUpClick}>SIGN UP</MainButton>
+        <Link to="/signup">
+          <MainButton handleButtonClick={() => {}}>SIGN UP</MainButton>
+        </Link>
       </div>
     </div>
   );

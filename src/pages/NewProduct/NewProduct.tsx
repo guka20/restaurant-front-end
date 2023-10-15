@@ -2,28 +2,39 @@ import { InputElement, MainButton } from "src/components";
 import "./NewProduct.css";
 import { useEffect, useState } from "react";
 import { NewProductType } from "src/types/Types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createNewProduct } from "src/helper";
+import { useNavigate } from "react-router-dom";
 export const NewProduct = () => {
   const [productValues, setProductValues] = useState<NewProductType>({
     category: "chicken",
   } as NewProductType);
-  useEffect(() => {
-    console.log(productValues);
-  }, [productValues]);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    (newProduct: NewProductType) => createNewProduct(newProduct),
+    {
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: ["products"],
+          refetchType: "active",
+        });
+      },
+      onError: (error) => {
+        console.error("Error adding to cart:", error);
+      },
+    }
+  );
+
   const handleAddButtonClick = () => {
-    console.log("Saved");
+    mutation.mutate(productValues);
+    navigate("/");
   };
   const handleInputChange = (e: any) => {
-    if (e.target.name === "image") {
-      setProductValues({
-        ...productValues,
-        image: URL.createObjectURL(e?.target.files[0]),
-      });
-    } else {
-      setProductValues({
-        ...productValues,
-        [e.target.name]: e.target.value,
-      });
-    }
+    setProductValues({
+      ...productValues,
+      [e.target.name]: e.target.value,
+    });
   };
   return (
     <div className="new-product-page">
@@ -52,10 +63,10 @@ export const NewProduct = () => {
           onChange={handleInputChange}
         />
         <input
-          type="file"
+          type="url"
           className="image"
           name="image"
-          accept=".png, .jpg, .jpeg"
+          placeholder="Image URL"
           onChange={handleInputChange}
         />
 

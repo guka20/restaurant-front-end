@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import "./MainButton.css";
 type MainButtonProps = {
   children: ReactNode;
-  handleButtonClick: () => void;
+  handleButtonClick: () => void | null;
 };
 export const MainButton = ({
   children,
