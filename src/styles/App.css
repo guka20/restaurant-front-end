@@ -17,3 +17,8 @@ body::-webkit-scrollbar-thumb {
   outline: none;
   border: none;
 }
+.error-text {
+  text-transform: capitalize;
+  color: rgb(249, 115, 22);
+  font-size: 1.1rem;
+}

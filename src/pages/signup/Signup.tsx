@@ -3,15 +3,34 @@ import { InputElement, MainButton } from "src/components";
 import icon from "src/assets/logo/chef.png";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
-type SignUpPropertiesTypes = {
-  email: string;
-  password: string;
-};
-
+import { useMutation } from "@tanstack/react-query";
+import { SignUpPropertiesTypes } from "src/types/user.types";
+import { signup } from "src/helper/auth/auth";
+import Swal from "sweetalert2";
 export const Signup = () => {
   const navigate = useNavigate();
-  const [SignUpProperties, setSignUpProperties] =
+  const [error, setError] = useState<string | null>(null);
+  const mutation = useMutation(
+    (userInfo: SignUpPropertiesTypes) => signup(userInfo),
+    {
+      onError: (error: Error) => {
+        setError(error.message);
+      },
+      onSuccess: () => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User signed up successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      },
+    }
+  );
+  const [signUpProperties, setSignUpProperties] =
     useState<SignUpPropertiesTypes>({
+      fullname: "",
       email: "",
       password: "",
     });
@@ -19,11 +38,13 @@ export const Signup = () => {
     const { value, name } = e.target;
 
     setSignUpProperties({
-      ...SignUpProperties,
+      ...signUpProperties,
       [name]: value,
     });
   };
-  const handleSignUpClick = () => {};
+  const handleSignUpClick = () => {
+    mutation.mutate(signUpProperties);
+  };
   const handleloginClick = () => {
     navigate("/login");
   };
@@ -34,24 +55,29 @@ export const Signup = () => {
       </div>
       <div className="signup-elements">
         <InputElement
+          name="fullname"
+          type="text"
+          placeholder="Full name"
+          value={signUpProperties?.fullname}
+          handleContactValueChange={handleValueChange}
+        />
+        <InputElement
           name="email"
           type="email"
           placeholder="Email address"
-          value={SignUpProperties?.email}
+          value={signUpProperties?.email}
           handleContactValueChange={handleValueChange}
         />
         <InputElement
           name="password"
           type="password"
           placeholder="Password"
-          value={SignUpProperties?.password}
+          value={signUpProperties?.password}
           handleContactValueChange={handleValueChange}
         />
-
+        <div className="error-text">{error && error}</div>
         <MainButton handleButtonClick={handleSignUpClick}>SIGN UP</MainButton>
-
         <div className="line"></div>
-
         <MainButton handleButtonClick={handleloginClick}>SIGN IN</MainButton>
       </div>
     </div>

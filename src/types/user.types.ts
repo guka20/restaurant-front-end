@@ -3,3 +3,9 @@ export enum UserEnum {
   USER = "user",
   ADMIN = "admin",
 }
+
+export type SignUpPropertiesTypes = {
+  fullname: string;
+  email: string;
+  password: string;
+};
