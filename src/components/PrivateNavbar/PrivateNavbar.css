@@ -46,6 +46,7 @@
       .add-button {
         font-size: 1rem;
         color: var(--dark-black);
+        background-color: transparent;
         cursor: pointer;
         & svg {
           font-size: 1.1rem;

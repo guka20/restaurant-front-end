@@ -42,13 +42,15 @@ export const ProductCart = ({
         <div className="image-place">
           <img src={image} alt="" />
         </div>
-        <button className="add-to-cart" onClick={handleAddInCartButton}>
-          <BsCartPlus />
-        </button>
+        {userType === UserEnum.USER && (
+          <button className="add-to-cart" onClick={handleAddInCartButton}>
+            <BsCartPlus />
+          </button>
+        )}
       </div>
       <div className="textures">
-        <span>{name}</span>
-        <span>{subtitle}</span>
+        <span className="name">{name}</span>
+        <span className="sub-title">{subtitle}</span>
         <span>
           <span className="dollar-icon">$ </span>
           {price}

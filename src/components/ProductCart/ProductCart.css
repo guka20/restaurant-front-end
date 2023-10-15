@@ -46,6 +46,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    .name {
+      font-size: 1.1rem;
+    }
+    .sub-title {
+      font-size: 1rem;
+      color: var(--secondary-font-color);
+    }
     & .dollar-icon {
       color: rgb(232, 0, 19);
     }
