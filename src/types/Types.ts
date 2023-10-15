@@ -7,7 +7,7 @@ export type ContactTypes = {
 
 export type ProductCardTypes = {
   product_id: string;
-  // image: string;
+  image: string;
   name: string;
   subtitle?: string;
   price: number;

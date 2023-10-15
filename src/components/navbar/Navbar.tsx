@@ -87,7 +87,7 @@ export const Navbar = () => {
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
             <FaShoppingCart className="shoping-cart" />
-            <div className="product-quantity">{data?.length}</div>
+            <div className="product-quantity">{data?.length || 0}</div>
           </li>
         </motion.ul>
         {userType === UserEnum.GUEST ? (

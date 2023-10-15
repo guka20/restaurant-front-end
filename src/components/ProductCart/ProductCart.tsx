@@ -13,13 +13,17 @@ export const ProductCart = ({
   subtitle,
   price,
   product_id,
+  image,
 }: ProductCardTypes) => {
   const { userType } = useUserTypeContext();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const mutation = useMutation((productID: string) => addNewCart(productID), {
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["carts"] });
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["carts"],
+        refetchType: "active",
+      });
     },
     onError: (error) => {
       console.error("Error adding to cart:", error);
@@ -36,7 +40,7 @@ export const ProductCart = ({
     <div className="product-cart">
       <div className="image-cart-place">
         <div className="image-place">
-          <img src={img} alt="" />
+          <img src={image} alt="" />
         </div>
         <button className="add-to-cart" onClick={handleAddInCartButton}>
           <BsCartPlus />

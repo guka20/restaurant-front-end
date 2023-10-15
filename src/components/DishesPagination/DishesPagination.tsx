@@ -9,9 +9,10 @@ import { ProductCardTypes } from "src/types/Types";
 export const DishesPagination = () => {
   const [currentData, setCurrentData] = useState<string>("menu");
   const { data, isError } = useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
+    queryKey: ["products", currentData],
+    queryFn: () => fetchProducts(currentData),
   });
+  console.log(data?.data);
 
   const handlePaginationClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const { id } = e.currentTarget;
@@ -93,22 +94,29 @@ export const DishesPagination = () => {
           Curry
         </div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: 200 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 200 }}
-        className="products"
-      >
-        {data?.data.map((prod: ProductCardTypes) => (
-          <ProductCart
-            key={prod.product_id}
-            name={prod.name}
-            subtitle={prod.subtitle || ""}
-            price={prod.price}
-            product_id={prod.product_id}
-          />
-        ))}
-      </motion.div>
+      {data?.data.length === 0 ? (
+        <div style={{ color: "black", textAlign: "center", padding: "50px 0" }}>
+          There is no any product
+        </div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, x: 200 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 200 }}
+          className="products"
+        >
+          {data?.data.map((prod: ProductCardTypes) => (
+            <ProductCart
+              key={prod.product_id}
+              name={prod.name}
+              subtitle={prod.subtitle || ""}
+              price={prod.price}
+              product_id={prod.product_id}
+              image={prod.image}
+            />
+          ))}
+        </motion.div>
+      )}
     </section>
   );
 };

@@ -16,7 +16,8 @@ export async function addNewCart(productId: string) {
   if (!res.ok) {
     throw new Error("Failed to add to cart");
   }
-  // return res.json();
+
+  return res.json();
 }
 
 export async function getAllCarts() {
