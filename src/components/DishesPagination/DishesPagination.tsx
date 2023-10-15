@@ -45,7 +45,7 @@ export const DishesPagination = () => {
         </div>
         <div
           className={`pagination-btn ${currentData === "fruits" && "active"}`}
-          id="fruits"
+          id="fruit"
           onClick={(e) => handlePaginationClick(e)}
         >
           Fruits
