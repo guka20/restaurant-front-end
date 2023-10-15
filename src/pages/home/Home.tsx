@@ -7,10 +7,7 @@ import { fetchProducts } from "src/helper";
 import { ProductCardTypes } from "src/types/Types";
 
 export const Home = () => {
-  //  const { data, isError } = useQuery({
-  //    queryKey: ["products", currentData],
-  //    queryFn: () => fetchProducts(currentData),
-  //  });
+
   const fresh = "fruit";
   const { data, isError } = useQuery({
     queryKey: ["fresh", fresh],
