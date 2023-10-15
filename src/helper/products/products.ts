@@ -3,7 +3,7 @@ import { baseUrl } from "..";
 
 export async function fetchProducts(category: string) {
   let query = category === "menu" ? "" : `?category=${category}`;
-  console.log(query);
+  console.log(baseUrl + "/product" + query);
 
   const res = await fetch(baseUrl + "/product" + query, {
     method: "GET",

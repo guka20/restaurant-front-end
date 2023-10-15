@@ -12,7 +12,6 @@ export const DishesPagination = () => {
     queryKey: ["products", currentData],
     queryFn: () => fetchProducts(currentData),
   });
-  console.log(data?.data);
 
   const handlePaginationClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const { id } = e.currentTarget;
