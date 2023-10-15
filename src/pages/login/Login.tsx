@@ -15,10 +15,14 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState<string | null>(null);
   const { setUserType } = useUserTypeContext();
   // ================ SEND POST REQUEST TO GET ACCESSTOKEN
   const createLoginMutation = useMutation({
     mutationFn: loginPost,
+    onError: (error: Error) => {
+      setError(error.message);
+    },
     onSuccess: (data: TokenDataType) => {
       const result = Decoder(data.accessToken);
       localStorage.setItem("token", data.accessToken);
@@ -61,7 +65,7 @@ export const Login = () => {
           value={loginProperties?.password}
           handleContactValueChange={handleValueChange}
         />
-
+        <div className="error-text">{error && error}</div>
         <div className="forgot-password">Forgot password</div>
 
         <MainButton handleButtonClick={handleLoginClick}>SIGN IN</MainButton>
