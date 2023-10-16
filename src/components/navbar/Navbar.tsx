@@ -54,6 +54,7 @@ export const Navbar = () => {
           exit={{ opacity: 0, x: 200 }}
         >
           <img
+            alt="chef"
             src={require("src/assets/logo/chef.png")}
             className="nav-bar-logo"
           />

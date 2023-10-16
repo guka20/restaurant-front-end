@@ -1,0 +1,57 @@
+.cart-item {
+  width: 90%;
+  min-height: 70px;
+  margin: 10px auto;
+  background-color: #2e3033;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+  .image-place {
+    width: 50px;
+    & img {
+      width: 100%;
+    }
+  }
+  .texture {
+    max-width: 100px;
+    font-size: 1rem;
+    color: var(--main-color);
+    .dollar-icon {
+      color: var(--red-color);
+    }
+  }
+  .counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 80px;
+    vertical-align: middle;
+    .num {
+      display: inline-block;
+      padding: 3px;
+      color: white;
+      background-color: rgb(40, 42, 44);
+    }
+    & button {
+      font-size: 1rem;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      & * {
+        vertical-align: middle;
+      }
+    }
+  }
+  .delete-icon {
+    border-radius: 5px;
+    height: 30px;
+    background-color: var(--red-color);
+    cursor: pointer;
+    & * {
+      vertical-align: middle;
+      color: white;
+    }
+  }
+}

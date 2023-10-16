@@ -35,3 +35,32 @@ export async function getAllCarts() {
 
   return res.json();
 }
+
+export async function changeQuanity(counter: number, id: string) {
+  const token = localStorage.getItem("token") || null;
+  if (!token) {
+    return null;
+  }
+  await fetch(baseUrl + "/cart/" + id, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ quantity: counter }),
+  });
+}
+
+export async function deleteCartItemById(id: string) {
+  const token = localStorage.getItem("token") || null;
+  if (!token) {
+    return null;
+  }
+  await fetch(baseUrl + "/cart/" + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}

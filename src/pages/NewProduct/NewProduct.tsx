@@ -1,6 +1,6 @@
-import { InputElement, MainButton } from "src/components";
+import { MainButton } from "src/components";
 import "./NewProduct.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NewProductType } from "src/types/Types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNewProduct } from "src/helper";

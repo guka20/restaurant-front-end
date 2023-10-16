@@ -22,17 +22,26 @@ export const Footer = () => {
             <a
               href="https://www.linkedin.com/in/gurami-davitadze-5013a8224/"
               target="_blank"
+              rel="noreferrer"
             >
               <BsLinkedin />
             </a>
           </li>
           <li>
-            <a href="https://github.com/guka20" target="_blank">
+            <a
+              href="https://github.com/guka20"
+              target="_blank"
+              rel="noreferrer"
+            >
               <BsGithub />
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/gu.ka.75098/" target="_blank">
+            <a
+              href="https://www.facebook.com/gu.ka.75098/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <BsFacebook />
             </a>
           </li>
@@ -40,6 +49,7 @@ export const Footer = () => {
             <a
               href="https://instagram.com/gukadavitadze?igshid=YTQwZjQ0NmI0OA=="
               target="_blank"
+              rel="noreferrer"
             >
               <BsInstagram />
             </a>

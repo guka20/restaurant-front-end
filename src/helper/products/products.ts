@@ -3,7 +3,6 @@ import { baseUrl } from "..";
 
 export async function fetchProducts(category: string) {
   let query = category === "menu" ? "" : `?category=${category}`;
-
   const res = await fetch(baseUrl + "/product" + query, {
     method: "GET",
     headers: {
@@ -19,7 +18,7 @@ export async function createNewProduct(product: NewProductType) {
     return null;
   }
 
-  const res = await fetch(baseUrl + "/product/new", {
+  await fetch(baseUrl + "/product/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

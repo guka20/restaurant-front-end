@@ -24,6 +24,7 @@ export const PrivateNavbar = () => {
           onClick={() => navigate("/admin")}
         >
           <img
+            alt="chef"
             src={require("src/assets/logo/chef.png")}
             className="nav-bar-logo"
           />
