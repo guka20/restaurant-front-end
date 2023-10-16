@@ -5,7 +5,7 @@ import { NewProductType } from "src/types/Types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNewProduct } from "src/helper";
 import { useNavigate } from "react-router-dom";
-export const NewProduct = () => {
+const NewProduct = () => {
   const [productValues, setProductValues] = useState<NewProductType>({
     category: "chicken",
   } as NewProductType);
@@ -95,3 +95,4 @@ export const NewProduct = () => {
     </div>
   );
 };
+export default NewProduct;

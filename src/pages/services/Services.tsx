@@ -5,7 +5,7 @@ import { BsBook, BsFlag } from "react-icons/bs";
 import { PiNotebookDuotone, PiMapPinLineBold } from "react-icons/pi";
 import { FiMusic } from "react-icons/fi";
 import { motion } from "framer-motion";
-export const Services = () => {
+const Services = () => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
@@ -79,3 +79,4 @@ export const Services = () => {
     </motion.div>
   );
 };
+export default Services;
