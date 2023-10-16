@@ -1,7 +1,5 @@
-import React from "react";
 import "./ProductCart.css";
 import { BsCartPlus } from "react-icons/bs";
-import img from "src/assets/products/cake.png";
 import { ProductCardTypes } from "src/types/Types";
 import { useUserTypeContext } from "src/context";
 import { UserEnum } from "src/types/user.types";

@@ -1,5 +1,5 @@
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { Swiper } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
