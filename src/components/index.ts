@@ -1,3 +1,5 @@
+export { LoadingPortal } from "./PortalComponents/LoadingPortal/LoadingPortal";
+export { Loading } from "./Loading/Loading";
 export { MainButton } from "./Buttons/MainButton/MainButton";
 export { InputElement } from "./inputElements/InputElement";
 export { Footer } from "./footer/Footer";

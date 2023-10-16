@@ -1,5 +1,6 @@
 import React from "react";
 
-export const UpdateProduct = () => {
+const UpdateProduct = () => {
   return <div>UpdateProduct</div>;
 };
+export default UpdateProduct;

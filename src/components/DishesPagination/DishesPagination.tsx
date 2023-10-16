@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import "./DishesPagination.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ProductCart } from "src/components";
+import { ProductCart, Loading } from "src/components";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "src/helper";
 import { ProductCardTypes } from "src/types/Types";
 export const DishesPagination = () => {
   const [currentData, setCurrentData] = useState<string>("menu");
-  const { data, isError } = useQuery({
+  const { data, isError, isLoading } = useQuery({
     queryKey: ["products", currentData],
     queryFn: () => fetchProducts(currentData),
   });
@@ -17,9 +17,10 @@ export const DishesPagination = () => {
     const { id } = e.currentTarget;
     setCurrentData(id);
   };
-  if (isError) {
-    return <div>Something is wrong</div>;
-  }
+  if (isError) return <div>Something is wrong</div>;
+
+  if (isLoading) return <Loading />;
+
   return (
     <section className="dishes-section">
       <span className="dishes-header">Our Hot Dishes</span>

@@ -6,26 +6,29 @@ import { useMutation } from "@tanstack/react-query";
 import { loginPost } from "src/helper";
 import { LoginPropertiesTypes, TokenDataType } from "./types/index";
 import { Link } from "react-router-dom";
-import { useUserTypeContext } from "src/context";
+import { useLoadingContext, useUserTypeContext } from "src/context";
 import { Decoder } from "src/helper/jwtDecoder";
 import { UserEnum } from "src/types/user.types";
 
-export const Login = () => {
+const Login = () => {
   const [loginProperties, setLoginProperties] = useState<LoginPropertiesTypes>({
     email: "",
     password: "",
   });
   const [error, setError] = useState<string | null>(null);
+  const { setIsLoading } = useLoadingContext();
   const { setUserType } = useUserTypeContext();
   // ================ SEND POST REQUEST TO GET ACCESSTOKEN
   const createLoginMutation = useMutation({
     mutationFn: loginPost,
     onError: (error: Error) => {
+      setIsLoading(false);
       setError(error.message);
     },
     onSuccess: (data: TokenDataType) => {
       const result = Decoder(data.accessToken);
       localStorage.setItem("token", data.accessToken);
+      setIsLoading(false);
       setUserType(result.role === "ADMIN" ? UserEnum.ADMIN : UserEnum.USER);
     },
   });
@@ -42,6 +45,7 @@ export const Login = () => {
 
   // ================ HANDLE LOGIN BUTTON CLICK
   const handleLoginClick = () => {
+    setIsLoading(true);
     createLoginMutation.mutate(loginProperties);
   };
 
@@ -79,3 +83,4 @@ export const Login = () => {
     </div>
   );
 };
+export default Login;
