@@ -6,6 +6,7 @@ import { UserEnum } from "src/types/user.types";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addNewCart } from "src/helper";
+import Swal from "sweetalert2";
 export const ProductCart = ({
   name,
   subtitle,
@@ -23,8 +24,12 @@ export const ProductCart = ({
         refetchType: "active",
       });
     },
-    onError: (error) => {
-      console.error("Error adding to cart:", error);
+    onError: (error: Error) => {
+      Swal.fire({
+        title: "Oops...",
+        text: String(error.message),
+        icon: "error",
+      });
     },
   });
   const handleAddInCartButton = () => {
@@ -40,7 +45,7 @@ export const ProductCart = ({
         <div className="image-place">
           <img src={image} alt="" />
         </div>
-        {userType === UserEnum.USER && (
+        {userType !== UserEnum.ADMIN && (
           <button className="add-to-cart" onClick={handleAddInCartButton}>
             <BsCartPlus />
           </button>

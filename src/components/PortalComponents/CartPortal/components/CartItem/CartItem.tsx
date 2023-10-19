@@ -14,8 +14,16 @@ type Mutationtype = {
 };
 export const CartItem = ({ cart }: CartItemProp) => {
   const queryClient = useQueryClient();
-  const updatemutation = useMutation((params: Mutationtype) =>
-    changeQuanity(params.counter, params.cartId)
+  const updatemutation = useMutation(
+    (params: Mutationtype) => changeQuanity(params.counter, params.cartId),
+    {
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: ["carts"],
+          refetchType: "active",
+        });
+      },
+    }
   );
   const deleteMutation = useMutation(
     (cart_id: string) => deleteCartItemById(cart_id),

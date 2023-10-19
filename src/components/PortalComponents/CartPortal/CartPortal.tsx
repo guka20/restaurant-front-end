@@ -68,13 +68,14 @@ export const CartPortal = () => {
         ) : (
           <div className="cart-items-place">
             <div className="products-list">
-              {data.map((cart: CartType) => (
+              {data?.cart?.cartItems?.map((cart: CartType) => (
                 <CartItem cart={cart} key={cart.cart_item_id} />
               ))}
             </div>
             <div className="total-price">
               <p>
-                Total Price - <span className="dollar-icon">$</span>30
+                Total Price - <span className="dollar-icon">$</span>
+                {data.totalPrice || 0}
               </p>
             </div>
           </div>

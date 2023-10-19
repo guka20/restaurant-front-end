@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -12,20 +12,22 @@ import {
 } from "src/context";
 import { ContactPortal } from "../PortalComponents/ContactPortal/ContactPortal";
 import { CartPortal } from "../PortalComponents/CartPortal/CartPortal";
-import "./Navbar.css";
 import { useQuery } from "@tanstack/react-query";
 import { getAllCarts } from "src/helper";
+import "./Navbar.css";
 
 export const Navbar = () => {
   const { isContactOpen, setIsContactOpen } = useContactContext();
   const { isCartOpen, setIsCartOpen } = useCartPortalContext();
   const { userType, setUserType } = useUserTypeContext();
   const [isNavbarOpen, setIsNavbarOpen] = useState<boolean>(false);
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["carts"],
     queryFn: getAllCarts,
   });
-
+  useEffect(() => {
+    if (userType === UserEnum.USER) refetch();
+  }, [userType]);
   const navigate = useNavigate();
 
   const handleLoginButton = () => {
@@ -35,6 +37,7 @@ export const Navbar = () => {
     navigate("/");
     setUserType(UserEnum.GUEST);
     localStorage.clear();
+    refetch();
   };
   return (
     <nav className="nav-bar">
@@ -88,7 +91,9 @@ export const Navbar = () => {
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
             <FaShoppingCart className="shoping-cart" />
-            <div className="product-quantity">{data?.length || 0}</div>
+            <div className="product-quantity">
+              {data?.cart?.cartItems?.length || 0}
+            </div>
           </li>
         </motion.ul>
         {userType === UserEnum.GUEST ? (

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,16 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "typeRoots": [
-      "node_modules/@types",
-      "src/types"
-    ]
-
-    
+    "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "files": ["globals.d.ts"],
-  "include": [
-    "src",
-    "globals.d.ts"
-  ]
+  "files": ["globals.d.ts", "./src/components/ProductCart/ProductCart.1.tsx"],
+  "include": ["src", "globals.d.ts"]
 }

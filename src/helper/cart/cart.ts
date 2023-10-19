@@ -13,8 +13,9 @@ export async function addNewCart(productId: string) {
     },
     body: JSON.stringify({ productId }),
   });
-  if (!res.ok) {
-    throw new Error("Failed to add to cart");
+  if (res.status !== 201) {
+    const result = await res.json();
+    throw new Error(result.message);
   }
 
   return res.json();
